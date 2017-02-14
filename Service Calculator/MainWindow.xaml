@@ -5,8 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Service_Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        FlowDirection="RightToLeft"
+        SizeToContent="Height"
+        Title="حاسبة سنوات الخدمة" Width="525"
+        ResizeMode="NoResize"
+        Icon="{x:Null}"
+        Background="#282828" Foreground="#ffffff" Padding="10">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelstyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="titleTextblockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="TextAlignment" Value="Center"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter  Property="Foreground" Value="Orange"></Setter>
+            </Style>
+            <Style x:Key="valueTextblockStyle" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Center"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label Style="{StaticResource labelstyle}">تاريخ التعيين</Label>
+            <DatePicker x:Name="EmploymentDataPicker" Grid.Row="0" Grid.Column="0" SelectedDateChanged="EmploymentDataPicker_SelectedDateChanged" ></DatePicker>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <Label Style="{StaticResource labelstyle}">التاريخ الحالي</Label>
+            <DatePicker x:Name="CurrentDataPicker" Grid.Row="0" Grid.Column="1" SelectedDateChanged="CurrentDataPicker_SelectedDateChanged" ></DatePicker>
+        </StackPanel>
+        <Border BorderBrush="Orange" BorderThickness="2" CornerRadius="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,0,20,0">
+        <TextBlock x:Name="txtbx_result"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            
+        </Border>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10">
+            <TextBlock Text="المطور" Style="{StaticResource titleTextblockStyle}"/>
+            <TextBlock Text="مهندس محمد احسان فاضل" Style="{StaticResource valueTextblockStyle}"/>
+            <Separator Height="10" Opacity="0"/>
+            <TextBlock Text="البريد الالكتروني" Style="{StaticResource titleTextblockStyle}"/>
+            <TextBlock Text="developer1engineer@gmail.com" Style="{StaticResource valueTextblockStyle}"/>
+        </StackPanel>
     </Grid>
 </Window>
